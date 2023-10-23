@@ -1,16 +1,16 @@
 SQL Shell (psql)
 
 -- Ajuda <br>
-\?
+```\?```
 
 -- Mostra todos os bancos de dados <br>
-\l 
+```\l ```
 
 -- Cria um banco de dados <br>
-CREATE DATABASE rate_bite_database
+```CREATE DATABASE rate_bite_database```
 
 -- Entrar no banco <br>
-\c rate_bite_database
+```\c rate_bite_database```
 
 -- Como definir um banco de dados como default ? <br>
 1. Abra o SQL Shell (psql)  
