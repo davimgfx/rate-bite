@@ -49,6 +49,7 @@ CREATE TABLE IF NOT EXISTS prato (
     valor DECIMAL(10, 2) NOT NULL,
     avaliacao INT CHECK (check_avaliacao(avaliacao)) NOT NULL,
     dia DATE NOT NULL,
+    comentario VARCHAR(500) NOT NULL;
     FOREIGN KEY (ID_restaurante) REFERENCES restaurante (ID_restaurante),
     FOREIGN KEY (ID_cliente) REFERENCES cliente (ID_cliente),
     FOREIGN KEY (ID_categoria) REFERENCES Categoria (ID_categoria)
@@ -57,7 +58,6 @@ CREATE TABLE IF NOT EXISTS prato (
 
 -- Colocando valores nas tabelas
 -- Restaurante
-
 INSERT INTO restaurante (nome, localizacao, cidade, estado, logo)
 VALUES
   ('MacDonalds', 'Avenida Paralela', 'Salvador', 
@@ -85,4 +85,31 @@ VALUES
 VALUES
   ('Davi', 29);
  
-SELECT * FROM restaurante
+-- Atendimento
+
+-- Da erro porque não está entre 0 e 5
+-- INSERT INTO atendimento (id_cliente, id_restaurante, avaliacao, dia)
+-- VALUES (2, 1, 6, CURRENT_DATE)
+
+INSERT INTO atendimento (id_cliente, id_restaurante, avaliacao, dia)
+VALUES (2, 1, 4, CURRENT_DATE)
+
+INSERT INTO atendimento (id_cliente, id_restaurante, avaliacao, dia)
+VALUES (3, 1, 1, CURRENT_DATE)
+
+INSERT INTO atendimento (id_cliente, id_restaurante, avaliacao, dia)
+VALUES (3, 2, 1, CURRENT_DATE)
+
+-- Categoria
+
+INSERT INTO categoria(nome)
+VALUES('pizza')
+
+INSERT INTO categoria(nome)
+VALUES('açai')
+
+INSERT INTO categoria(nome)
+VALUES('hamburguer')
+SELECT * FROM atendimento
+
+-- Prato
