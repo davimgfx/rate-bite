@@ -11,16 +11,16 @@ CREATE TABLE IF NOT EXISTS cliente(
     ID_cliente SERIAL PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
     idade INT NOT NULL,
-    cidade VARCHAR(255) NOT NULL,
-    estado VARCHAR(255) NOT NULL
+    cidade VARCHAR(255) DEFAULT 'Salvador',
+    estado VARCHAR(255) DEFAULT 'Bahia'
 );
 
 CREATE TABLE IF NOT EXISTS restaurante (
     ID_restaurante SERIAL PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
     localizacao VARCHAR(255) NOT NULL,
-    cidade VARCHAR(255) NOT NULL DEFAULT 'Salvador',
-    estado VARCHAR(255) NOT NULL DEFAULT 'Bahia',
+    cidade VARCHAR(255) DEFAULT 'Salvador',
+    estado VARCHAR(255) DEFAULT 'Bahia',
     logo VARCHAR(512) NOT NULL,
     CONSTRAINT restaurante_nome_unique UNIQUE (nome)
 );
@@ -56,6 +56,8 @@ CREATE TABLE IF NOT EXISTS prato (
 
 
 -- Colocando valores nas tabelas
+-- Restaurante
+
 INSERT INTO restaurante (nome, localizacao, cidade, estado, logo)
 VALUES
   ('MacDonalds', 'Avenida Paralela', 'Salvador', 
@@ -66,20 +68,13 @@ VALUES
   ('Pizza', 'Pinto de Aguiar', 'Salvador', 
    'Bahia', 'https://res.cloudinary.com/dfbny1pcr/image/upload/v1698065108/e7iaqjfxhekv9gdsfjtu.png');
 
--- Dispara um erro, pois o nome é unico
--- INSERT INTO restaurante (nome, localizacao, cidade, estado, logo)
--- VALUES
---   ('MacDonalds', 'Orlando Gomes', 'Salvador', 
---    'Bahia', 'https://res.cloudinary.com/dfbny1pcr/image/upload/v1698063477/kgh4s3yv5z2o0rn7pcdi.jpg');
-
 INSERT INTO restaurante (nome, localizacao, logo)
 VALUES
   ('Açai do monstro', 'Itapuã','https://res.cloudinary.com/dfbny1pcr/image/upload/v1698066805/xjycxc52l0jepwvrhz9k.png');
-   
--- Dispara um erro pois a valores nulos
--- INSERT INTO restaurante (nome, localizacao, cidade, estado, logo)
--- VALUES
---   ('Açai do monstro', 'Salvador', 
---    'Bahia', 'https://res.cloudinary.com/dfbny1pcr/image/upload/v1698066805/xjycxc52l0jepwvrhz9k.png');
+
+-- Cliente
+INSERT INTO cliente (nome, idade)
+VALUES
+  ('Arnaldo', 23);
  
 SELECT * FROM restaurante
