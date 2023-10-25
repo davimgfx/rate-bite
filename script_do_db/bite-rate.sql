@@ -72,6 +72,7 @@ INSERT INTO restaurante (nome, localizacao, logo)
 VALUES
   ('Açai do monstro', 'Itapuã','https://res.cloudinary.com/dfbny1pcr/image/upload/v1698066805/xjycxc52l0jepwvrhz9k.png');
 
+
 -- Cliente
 INSERT INTO cliente (nome, idade)
 VALUES
@@ -95,6 +96,9 @@ VALUES (3, 1, 1, CURRENT_DATE)
 
 INSERT INTO atendimento (id_cliente, id_restaurante, avaliacao, dia)
 VALUES (3, 2, 1, CURRENT_DATE)
+
+INSERT INTO atendimento (id_cliente, id_restaurante, avaliacao, dia)
+VALUES (1, 1, 2, CURRENT_DATE)
 
 -- Categoria
 
