@@ -76,5 +76,13 @@ VALUES
 INSERT INTO cliente (nome, idade)
 VALUES
   ('Arnaldo', 23);
+
+  INSERT INTO cliente (nome, idade)
+VALUES
+  ('Davi', 19);
+ 
+ INSERT INTO cliente (nome, idade)
+VALUES
+  ('Davi', 29);
  
 SELECT * FROM restaurante
