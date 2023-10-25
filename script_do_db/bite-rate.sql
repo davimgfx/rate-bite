@@ -120,6 +120,9 @@ VALUES
 	-- Pizza
 	INSERT INTO atendimento (id_cliente, id_restaurante, avaliacao, dia)
 	VALUES (1, 2, 0, CURRENT_DATE)
+
+	INSERT INTO atendimento (id_cliente, id_restaurante, avaliacao, dia)
+	VALUES (1, 2, 5, CURRENT_DATE)
 		
 -- Categoria
 
