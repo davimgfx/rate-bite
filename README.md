@@ -15,11 +15,15 @@ A RateBite é um site onde é possível cadastrar restaurantes, bem como avalia�
 - PostgresSQL
 
 ## Diagrama do Site
-<div align='center'><img src="https://github.com/davimgfx/rate-bite/assets/118557337/bb1f38f4-7688-482d-a198-14b7d6f65392"/></div>
+<div align='center'><img src="https://github.com/davimgfx/rate-bite/assets/118557337/2178fdc4-70be-4c94-ba49-9a2d0186bbb7"/></div>
 
 ## Tabela do Crud
 <div align='center'><img src="https://github.com/davimgfx/rate-bite/assets/118557337/2f2cd4f0-42cd-4b38-8916-6b0365db5b61"/></div>
 <div align='center'><img src="https://github.com/davimgfx/rate-bite/assets/118557337/923da0e7-92fc-4ef0-a251-4e4d8f5d5226"/></div>
+
+## Views
+<div align='center'><img src="https://github.com/davimgfx/rate-bite/assets/118557337/3ac42a8e-6e26-41cf-a5b8-ddbc7e94f9b4"/></div>
+
 
 ## Design do Site
 ### Logo:

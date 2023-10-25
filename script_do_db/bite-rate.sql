@@ -11,16 +11,16 @@ CREATE TABLE IF NOT EXISTS cliente(
     ID_cliente SERIAL PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
     idade INT NOT NULL,
-    cidade VARCHAR(255) NOT NULL,
-    estado VARCHAR(255) NOT NULL
+    cidade VARCHAR(255) DEFAULT 'Salvador',
+    estado VARCHAR(255) DEFAULT 'Bahia'
 );
 
 CREATE TABLE IF NOT EXISTS restaurante (
     ID_restaurante SERIAL PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
     localizacao VARCHAR(255) NOT NULL,
-    cidade VARCHAR(255) NOT NULL DEFAULT 'Salvador',
-    estado VARCHAR(255) NOT NULL DEFAULT 'Bahia',
+    cidade VARCHAR(255) DEFAULT 'Salvador',
+    estado VARCHAR(255) DEFAULT 'Bahia',
     logo VARCHAR(512) NOT NULL,
     CONSTRAINT restaurante_nome_unique UNIQUE (nome)
 );
@@ -49,6 +49,7 @@ CREATE TABLE IF NOT EXISTS prato (
     valor DECIMAL(10, 2) NOT NULL,
     avaliacao INT CHECK (check_avaliacao(avaliacao)) NOT NULL,
     dia DATE NOT NULL,
+    comentario VARCHAR(500) NOT NULL;
     FOREIGN KEY (ID_restaurante) REFERENCES restaurante (ID_restaurante),
     FOREIGN KEY (ID_cliente) REFERENCES cliente (ID_cliente),
     FOREIGN KEY (ID_categoria) REFERENCES Categoria (ID_categoria)
@@ -56,6 +57,7 @@ CREATE TABLE IF NOT EXISTS prato (
 
 
 -- Colocando valores nas tabelas
+-- Restaurante
 INSERT INTO restaurante (nome, localizacao, cidade, estado, logo)
 VALUES
   ('MacDonalds', 'Avenida Paralela', 'Salvador', 
@@ -66,20 +68,118 @@ VALUES
   ('Pizza', 'Pinto de Aguiar', 'Salvador', 
    'Bahia', 'https://res.cloudinary.com/dfbny1pcr/image/upload/v1698065108/e7iaqjfxhekv9gdsfjtu.png');
 
--- Dispara um erro, pois o nome é unico
--- INSERT INTO restaurante (nome, localizacao, cidade, estado, logo)
--- VALUES
---   ('MacDonalds', 'Orlando Gomes', 'Salvador', 
---    'Bahia', 'https://res.cloudinary.com/dfbny1pcr/image/upload/v1698063477/kgh4s3yv5z2o0rn7pcdi.jpg');
-
 INSERT INTO restaurante (nome, localizacao, logo)
 VALUES
   ('Açai do monstro', 'Itapuã','https://res.cloudinary.com/dfbny1pcr/image/upload/v1698066805/xjycxc52l0jepwvrhz9k.png');
-   
--- Dispara um erro pois a valores nulos
--- INSERT INTO restaurante (nome, localizacao, cidade, estado, logo)
--- VALUES
---   ('Açai do monstro', 'Salvador', 
---    'Bahia', 'https://res.cloudinary.com/dfbny1pcr/image/upload/v1698066805/xjycxc52l0jepwvrhz9k.png');
+
+
+-- Cliente
+INSERT INTO cliente (nome, idade)
+VALUES
+  ('Arnaldo', 23);
+
+  INSERT INTO cliente (nome, idade)
+VALUES
+  ('Davi', 19);
  
-SELECT * FROM restaurante
+ INSERT INTO cliente (nome, idade)
+VALUES
+  ('Davi', 29);
+ 
+-- Atendimento
+
+	-- Mac Donalds
+	INSERT INTO atendimento (id_cliente, id_restaurante, avaliacao, dia)
+	VALUES (2, 1, 4, CURRENT_DATE)
+	
+	INSERT INTO atendimento (id_cliente, id_restaurante, avaliacao, dia)
+	VALUES (3, 1, 1, CURRENT_DATE)
+	
+	INSERT INTO atendimento (id_cliente, id_restaurante, avaliacao, dia)
+	VALUES (3, 2, 1, CURRENT_DATE)
+	
+	INSERT INTO atendimento (id_cliente, id_restaurante, avaliacao, dia)
+	VALUES (1, 1, 2, CURRENT_DATE)
+	
+	INSERT INTO atendimento (id_cliente, id_restaurante, avaliacao, dia)
+	VALUES (3, 1, 5, CURRENT_DATE)	
+	
+	INSERT INTO atendimento (id_cliente, id_restaurante, avaliacao, dia)
+	VALUES (2, 1, 0, CURRENT_DATE)
+	
+	INSERT INTO atendimento (id_cliente, id_restaurante, avaliacao, dia)
+	VALUES (1, 1, 5, CURRENT_DATE)
+	
+	INSERT INTO atendimento (id_cliente, id_restaurante, avaliacao, dia)
+	VALUES (1, 1, 0, CURRENT_DATE)
+
+
+	INSERT INTO atendimento (id_cliente, id_restaurante, avaliacao, dia)
+	VALUES (1, 2, 5, CURRENT_DATE)
+
+	-- Pizza
+	INSERT INTO atendimento (id_cliente, id_restaurante, avaliacao, dia)
+	VALUES (1, 2, 0, CURRENT_DATE)
+
+	INSERT INTO atendimento (id_cliente, id_restaurante, avaliacao, dia)
+	VALUES (1, 2, 5, CURRENT_DATE)
+		
+-- Categoria
+
+INSERT INTO categoria(nome)
+VALUES('pizza')
+
+INSERT INTO categoria(nome)
+VALUES('açai')
+
+INSERT INTO categoria(nome)
+VALUES('hamburguer')
+SELECT * FROM atendimento
+
+-- Prato
+
+INSERT INTO prato (id_restaurante, id_cliente, id_categoria, nome, valor, avaliacao, dia, comentario)
+VALUES (1, 1, 3, 'Big Mac', 12.2, 3, CURRENT_DATE, 'Achei muita salgado' )
+
+INSERT INTO prato (id_restaurante, id_cliente, id_categoria, nome, valor, avaliacao, dia, comentario)
+VALUES (2, 1, 1, 'Pizza calabresa pequena', 40.2, 3, CURRENT_DATE, 'Achei muita massa, e pedi sem cebola porém veio com' )
+
+INSERT INTO prato (id_restaurante, id_cliente, id_categoria, nome, valor, avaliacao, dia, comentario)
+VALUES (3, 2, 2, 'Açai com granola', 20.5, 5, CURRENT_DATE, 'perfeito!' )
+
+-- Criando view para facilitar a visualização das tabelas juntas
+-- Pratos com informações
+CREATE pratos_com_informacoes AS
+SELECT
+	prato.id_prato AS id_prato,
+    prato.nome AS nome_prato,
+    restaurante.nome AS nome_restaurante,
+    categoria.nome AS nome_categoria,
+    cliente.nome AS nome_cliente,
+    cliente.idade AS idade_cliente,
+    prato.avaliacao AS avaliacao_cliente
+FROM prato
+INNER JOIN restaurante ON prato.id_restaurante = restaurante.ID_restaurante
+INNER JOIN categoria ON prato.id_categoria = categoria.ID_categoria
+INNER JOIN cliente ON prato.id_cliente = cliente.ID_cliente;
+		
+SELECT * FROM pratos_com_informacoes ORDER BY id_prato ASC;
+
+-- Para ver a tabela geral do site
+CREATE OR REPLACE VIEW restaurantes_avaliacoes AS
+SELECT
+    r.nome AS nome_restaurante,
+    r.logo AS logo_restaurante,
+    r.cidade AS cidade_restaurante,
+    r.estado AS estado_restaurante,
+    COALESCE(AVG(a.avaliacao), 0) AS media_avaliacao_atendimento,
+    COUNT(a.avaliacao) AS pessoas_avaliacao_atendimento,
+    COALESCE(AVG(p2.avaliacao), 0) AS media_avaliacao_prato_gerais,
+    COUNT(DISTINCT c.id_cliente) AS pessoas_avaliacao_prato_gerais
+FROM restaurante r
+LEFT JOIN atendimento a ON r.ID_restaurante = a.id_restaurante
+LEFT JOIN prato p2 ON r.ID_restaurante = p2.id_restaurante
+LEFT JOIN cliente c ON p2.id_cliente = c.id_cliente
+GROUP BY r.ID_restaurante;;
+
+SELECT * FROM restaurantes_avaliacoes
