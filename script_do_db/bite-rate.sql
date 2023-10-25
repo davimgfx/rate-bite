@@ -88,18 +88,39 @@ VALUES
  
 -- Atendimento
 
-INSERT INTO atendimento (id_cliente, id_restaurante, avaliacao, dia)
-VALUES (2, 1, 4, CURRENT_DATE)
+	-- Mac Donalds
+	INSERT INTO atendimento (id_cliente, id_restaurante, avaliacao, dia)
+	VALUES (2, 1, 4, CURRENT_DATE)
+	
+	INSERT INTO atendimento (id_cliente, id_restaurante, avaliacao, dia)
+	VALUES (3, 1, 1, CURRENT_DATE)
+	
+	INSERT INTO atendimento (id_cliente, id_restaurante, avaliacao, dia)
+	VALUES (3, 2, 1, CURRENT_DATE)
+	
+	INSERT INTO atendimento (id_cliente, id_restaurante, avaliacao, dia)
+	VALUES (1, 1, 2, CURRENT_DATE)
+	
+	INSERT INTO atendimento (id_cliente, id_restaurante, avaliacao, dia)
+	VALUES (3, 1, 5, CURRENT_DATE)	
+	
+	INSERT INTO atendimento (id_cliente, id_restaurante, avaliacao, dia)
+	VALUES (2, 1, 0, CURRENT_DATE)
+	
+	INSERT INTO atendimento (id_cliente, id_restaurante, avaliacao, dia)
+	VALUES (1, 1, 5, CURRENT_DATE)
+	
+	INSERT INTO atendimento (id_cliente, id_restaurante, avaliacao, dia)
+	VALUES (1, 1, 0, CURRENT_DATE)
 
-INSERT INTO atendimento (id_cliente, id_restaurante, avaliacao, dia)
-VALUES (3, 1, 1, CURRENT_DATE)
 
-INSERT INTO atendimento (id_cliente, id_restaurante, avaliacao, dia)
-VALUES (3, 2, 1, CURRENT_DATE)
+	INSERT INTO atendimento (id_cliente, id_restaurante, avaliacao, dia)
+	VALUES (1, 2, 5, CURRENT_DATE)
 
-INSERT INTO atendimento (id_cliente, id_restaurante, avaliacao, dia)
-VALUES (1, 1, 2, CURRENT_DATE)
-
+	-- Pizza
+	INSERT INTO atendimento (id_cliente, id_restaurante, avaliacao, dia)
+	VALUES (1, 2, 0, CURRENT_DATE)
+		
 -- Categoria
 
 INSERT INTO categoria(nome)
