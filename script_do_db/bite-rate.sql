@@ -174,11 +174,12 @@ SELECT
     r.estado AS estado_restaurante,
     COALESCE(AVG(a.avaliacao), 0) AS media_avaliacao_atendimento,
     COUNT(a.avaliacao) AS pessoas_avaliacao_atendimento,
-    COALESCE(AVG(p.avaliacao), 0) AS media_avaliacao_pratos,
-    COUNT(p.avaliacao) AS pessoas_avaliacao_pratos
+    COALESCE(AVG(p2.avaliacao), 0) AS media_avaliacao_prato_gerais,
+    COUNT(DISTINCT c.id_cliente) AS pessoas_avaliacao_prato_gerais
 FROM restaurante r
 LEFT JOIN atendimento a ON r.ID_restaurante = a.id_restaurante
-LEFT JOIN prato p ON r.ID_restaurante = p.id_restaurante
-GROUP BY r.ID_restaurante;
+LEFT JOIN prato p2 ON r.ID_restaurante = p2.id_restaurante
+LEFT JOIN cliente c ON p2.id_cliente = c.id_cliente
+GROUP BY r.ID_restaurante;;
 
 SELECT * FROM restaurantes_avaliacoes
