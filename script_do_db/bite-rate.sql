@@ -120,7 +120,7 @@ INSERT INTO prato (id_restaurante, id_cliente, id_categoria, nome, valor, avalia
 VALUES (3, 2, 2, 'Açai com granola', 20.5, 5, CURRENT_DATE, 'perfeito!' )
 
 -- Criando view para facilitar a visualização das tabelas juntas
-
+-- Pratos com informações
 CREATE pratos_com_informacoes AS
 SELECT
 	prato.id_prato AS id_prato,
@@ -135,6 +135,4 @@ INNER JOIN restaurante ON prato.id_restaurante = restaurante.ID_restaurante
 INNER JOIN categoria ON prato.id_categoria = categoria.ID_categoria
 INNER JOIN cliente ON prato.id_cliente = cliente.ID_cliente;
 		
-DROP VIEW pratos_com_informacoes;
-	
 SELECT * FROM pratos_com_informacoes ORDER BY id_prato ASC;
