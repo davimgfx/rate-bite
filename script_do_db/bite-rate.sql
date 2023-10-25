@@ -164,3 +164,21 @@ INNER JOIN categoria ON prato.id_categoria = categoria.ID_categoria
 INNER JOIN cliente ON prato.id_cliente = cliente.ID_cliente;
 		
 SELECT * FROM pratos_com_informacoes ORDER BY id_prato ASC;
+
+-- Para ver a tabela geral do site
+CREATE OR REPLACE VIEW restaurantes_avaliacoes AS
+SELECT
+    r.nome AS nome_restaurante,
+    r.logo AS logo_restaurante,
+    r.cidade AS cidade_restaurante,
+    r.estado AS estado_restaurante,
+    COALESCE(AVG(a.avaliacao), 0) AS media_avaliacao_atendimento,
+    COUNT(a.avaliacao) AS pessoas_avaliacao_atendimento,
+    COALESCE(AVG(p.avaliacao), 0) AS media_avaliacao_pratos,
+    COUNT(p.avaliacao) AS pessoas_avaliacao_pratos
+FROM restaurante r
+LEFT JOIN atendimento a ON r.ID_restaurante = a.id_restaurante
+LEFT JOIN prato p ON r.ID_restaurante = p.id_restaurante
+GROUP BY r.ID_restaurante;
+
+SELECT * FROM restaurantes_avaliacoes
