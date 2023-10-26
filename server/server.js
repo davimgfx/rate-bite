@@ -7,6 +7,7 @@ const morgan = require("morgan");
 const db = require("./db");
 
 app.use(morgan("dev"));
+app.use(express.json());
 
 // Get all restaurants
 app.get("/api/v1/restaurantes", async (req, res) => {
@@ -16,7 +17,7 @@ app.get("/api/v1/restaurantes", async (req, res) => {
       status: "success",
       results: result.rows.length,
       data: {
-        restaurantes: result,
+        restaurantes: result.rows,
       },
     });
   } catch (error) {
@@ -25,13 +26,92 @@ app.get("/api/v1/restaurantes", async (req, res) => {
 });
 
 // Get 1 restaurant
-app.get("/api/v1/restaurantes/:id", (req, res) => {
-  console.log(req.params.id);
+app.get("/api/v1/restaurantes/:id", async (req, res) => {
+  try {
+    const result = await db.query(
+      "SELECT * FROM restaurante WHERE id_restaurante = $1",
+      [req.params.id]
+    );
+    res.status(200).json({
+      status: "success",
+      data: {
+        restaurante: result.rows[0],
+      },
+    });
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 // Create a new restaurant
-app.post("/api/v1/restaurantes/:id", (req, res) => {
-  console.log(req);
+app.post("/api/v1/restaurantes", async (req, res) => {
+  try {
+    const results = await db.query(
+      "INSERT INTO restaurante (nome, localizacao, cidade, estado, logo) VALUES ($1, $2, $3, $4, $5) RETURNING *",
+      [
+        req.body.nome,
+        req.body.localizacao,
+        req.body.cidade,
+        req.body.estado,
+        req.body.logo,
+      ]
+    );
+    console.log(results);
+    res.status(201).json({
+      status: "success",
+      data: {
+        restaurante: results.rows[0],
+      },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+// Update a restaurant
+app.put("/api/v1/restaurantes/:id", async (req, res) => {
+  try {
+    const results = await db.query(
+      "UPDATE restaurante SET nome = $1, localizacao = $2, cidade = $3, estado= $4, logo = $5 WHERE id_restaurante = $6 RETURNING *",
+      [
+        req.body.nome,
+        req.body.localizacao,
+        req.body.cidade,
+        req.body.estado,
+        req.body.logo,
+        req.params.id,
+      ]
+    );
+    console.log(results);
+    res.status(200).json({
+      status: "success",
+      data: {
+        restaurante: results.rows[0],
+      },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+// Delete a restaurant
+
+app.delete("/api/v1/restaurantes/:id", async (req, res) => {
+  try {
+    const results = await db.query(
+      "DELETE FROM restaurante WHERE id_restaurante = $1 RETURNING *",
+      [req.params.id]
+    );
+    console.log(results);
+    res.status(201).json({
+      status: "success",
+      data: {
+        restaurante: results.rows[0],
+      },
+    });
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 const port = process.env.PORT || 3001;
