@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS restaurante (
     cidade VARCHAR(255) DEFAULT 'Salvador',
     estado VARCHAR(255) DEFAULT 'Bahia',
     logo VARCHAR(512) NOT NULL,
-    CONSTRAINT restaurante_nome_unique UNIQUE (nome)
+    CONSTRAINT restaurante_nome_localizacao_unique UNIQUE (nome, localizacao);
 );
 
 CREATE TABLE IF NOT EXISTS atendimento (
@@ -148,6 +148,7 @@ INSERT INTO prato (id_restaurante, id_cliente, id_categoria, nome, valor, avalia
 VALUES (3, 2, 2, 'Açai com granola', 20.5, 5, CURRENT_DATE, 'perfeito!' )
 
 -- Criando view para facilitar a visualização das tabelas juntas
+		
 -- Pratos com informações
 CREATE pratos_com_informacoes AS
 SELECT
@@ -183,3 +184,10 @@ LEFT JOIN cliente c ON p2.id_cliente = c.id_cliente
 GROUP BY r.ID_restaurante;;
 
 SELECT * FROM restaurantes_avaliacoes
+
+-- Alterando valores das tabelas
+	
+UPDATE restaurante SET localizacao = 'Av Paralela' WHERE id_restaurante = 1
+UPDATE restaurante SET localizacao = 'Av Pinto de Aguiar' WHERE id_restaurante = 2
+UPDATE restaurante SET localizacao = 'Salvador Norte Shopping' WHERE nome = 'Pizza Hut'
+
