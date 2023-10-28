@@ -1,11 +1,10 @@
-import Image from 'next/image'
-
-import { Header } from './components'
+import { Header, TableRestaurants } from "./components";
 
 export default function Home() {
   return (
-    <main>
-      <Header/>
-    </main>
-  )
+    <>
+      <Header />
+      <TableRestaurants />
+    </>
+  );
 }
