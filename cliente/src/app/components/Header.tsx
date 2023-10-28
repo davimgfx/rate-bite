@@ -38,10 +38,10 @@ export const Header = () => {
           <div className="flex items-center gap-4">
             <p>RateBite for Business</p>
             <p>Escreve uma avaliação</p>
-            <button className="border border-white px-4 py-3 rounded-md text-[1.4rem]">
+            <button className="border border-white px-4 py-3 rounded-md">
               Acessar
             </button>
-            <button className="bg-red-600 px-4 py-3 rounded-md text-[1.4rem]">
+            <button className="bg-red-600 px-4 py-3 rounded-md">
               Cadastra-se
             </button>
           </div>
