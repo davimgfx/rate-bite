@@ -12,7 +12,7 @@ export const Header = () => {
           <div className="relative">
             <div className="flex items-center">
               <input
-                className="border border-black w-[30rem] h-[3.5rem] p-1"
+                className="border border-black w-[35rem] h-[3.5rem] p-1"
                 type="text"
                 name=""
                 id=""
