@@ -1,6 +1,11 @@
-import React from "react";
-
+"use client";
+import React, { useEffect, useState, useContext } from "react";
+import { RestaurantsContext } from "../context/RestaurantsContext";
+import Image from "next/image";
 export const TableRestaurants = () => {
+  const { restaurants } = useContext(RestaurantsContext);
+  console.log(restaurants);
+
   return (
     <section>
       <div className="mt-[5rem] flex justify-center">
@@ -16,7 +21,7 @@ export const TableRestaurants = () => {
           <tr className="flex gap-[10rem] text-[1.5rem]">
             <th className="text-[#343946]">RESTAURANTES</th>
             <th>Pessoas que avaliaram</th>
-            <th>Media da Qualidade</th>
+            <th>Media do Atendimento</th>
             <th>Pessoas que avaliaram</th>
             <th>Media dos pratos</th>
             <th>Edite</th>
@@ -24,14 +29,46 @@ export const TableRestaurants = () => {
           </tr>
         </thead>
         <tbody className="users-infos-table-body">
-          <tr>
-            <td>a</td>
-            <td>b</td>
-            <td>c</td>
-            <td>d</td>
-          </tr>
+          {restaurants &&
+            restaurants.map((item) => (
+              <tr
+                key={item.nome_restaurante}
+                className="flex gap-[10rem] text-[1.5rem]">
+                <div className="flex items-center">
+                  <td>
+                    <Image
+                      src={item.logo_restaurante}
+                      alt={item.nome_restaurante}
+                      width={64}
+                      height={64}
+                    />
+                  </td>
+                  <div>
+                    <td>{item.nome_restaurante}</td>
+                    <div>
+                      <td>{item.cidade_restaurante}</td>
+                      <td>{item.estado_restaurante}</td>
+                    </div>
+                  </div>
+                </div>
+
+                <td>{item.pessoas_avaliacao_atendimento}</td>
+                <td>
+                  {parseFloat(item.media_avaliacao_atendimento)
+                    .toFixed(2)
+                    .toString()}
+                </td>
+                <td>{item.pessoas_avaliacao_prato_gerais}</td>
+                <td>
+                  {parseFloat(item.media_avaliacao_prato_gerais)
+                    .toFixed(2)
+                    .toString()}
+                </td>
+              </tr>
+            ))}
         </tbody>
       </table>
+
       <div className="navigation-buttons"></div>
     </section>
   );
