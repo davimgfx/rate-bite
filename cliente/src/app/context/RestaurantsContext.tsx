@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React, { createContext, useState } from "react";
 
@@ -18,7 +18,11 @@ export const RestaurantsContextProvider = ({
 }) => {
   const [restaurants, setRestaurants] = useState(undefined);
 
-  const contextValue = { restaurants, setRestaurants }
+  const addRestaurants = (restaurant) => {
+    setRestaurants([...restaurants, restaurant]);
+  };
+
+  const contextValue = { restaurants, setRestaurants, addRestaurants };
   return (
     <RestaurantsContext.Provider value={contextValue}>
       {children}
