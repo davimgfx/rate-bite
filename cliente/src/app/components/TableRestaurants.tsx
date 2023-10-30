@@ -1,8 +1,9 @@
 "use client";
-import React, { useEffect, useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { RestaurantsContext } from "../context/RestaurantsContext";
-import { AddRestaurantModal } from "./AddRestaurantModal";
+import { AddRestaurantModal } from ".";
 import Image from "next/image";
+
 export const TableRestaurants = () => {
   const { restaurants } = useContext(RestaurantsContext);
   const [isModal, setIsModal] = useState(false);
