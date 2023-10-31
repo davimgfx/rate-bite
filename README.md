@@ -26,8 +26,7 @@ A RateBite é um site onde é possível cadastrar restaurantes, bem como avalia�
 <div align='center'><img src="https://github.com/davimgfx/rate-bite/assets/118557337/3ac42a8e-6e26-41cf-a5b8-ddbc7e94f9b4"/></div>
 
 ### Um resumo para ver as avaliações dos restaurantes
-<div align='center'><img src="https://github.com/davimgfx/rate-bite/assets/118557337/e852d23c-ccb8-427e-8de4-b0c6b7fcff4e"/></div>
-
+<div align='center'><img src="https://github.com/davimgfx/rate-bite/assets/118557337/69333227-b7c8-4d1e-8376-9eb088a7fc9f"/></div>
 
 ## Design do Site
 ### Logo:
