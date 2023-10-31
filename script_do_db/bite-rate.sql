@@ -169,6 +169,8 @@ SELECT * FROM pratos_com_informacoes ORDER BY id_prato ASC;
 -- Para ver a tabela geral do site
 CREATE OR REPLACE VIEW restaurantes_avaliacoes AS
 SELECT
+    r.id_restaurante AS id_restaurante,
+    r.localizacao AS localizacao_restaurante,
     r.nome AS nome_restaurante,
     r.logo AS logo_restaurante,
     r.cidade AS cidade_restaurante,
