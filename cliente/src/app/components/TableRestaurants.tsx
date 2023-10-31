@@ -4,6 +4,7 @@ import { RestaurantsContext } from "../context/RestaurantsContext";
 import { AddRestaurantModal } from ".";
 import Image from "next/image";
 import RestaurantApi from "@/api/RestaurantApi";
+import Link from "next/link";
 
 export const TableRestaurants = () => {
   const { restaurants, setRestaurants } = useContext(RestaurantsContext);
@@ -16,8 +17,8 @@ export const TableRestaurants = () => {
         restaurants.filter((restaurant) => {
           return restaurant.id !== id;
         })
-      )
-      console.log(response)
+      );
+      console.log(response);
     } catch (error) {
       console.log(error);
     }
@@ -82,9 +83,11 @@ export const TableRestaurants = () => {
                     .toString()}
                 </td>
                 <td>
-                  <button className=" bg-yellow-500 px-4 py-3 rounded-md text-white text-[1.4rem] ">
-                    Edite
-                  </button>
+                  <Link href={`/restaurants/${item.id_restaurante}/update`}>
+                    <button className=" bg-yellow-500 px-4 py-3 rounded-md text-white text-[1.4rem] ">
+                      Edite
+                    </button>
+                  </Link>
                 </td>
                 <td>
                   <button
