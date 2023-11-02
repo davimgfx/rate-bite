@@ -42,7 +42,7 @@ export const Header = () => {
               Acessar
             </button>
             <button className="bg-red-600 px-4 py-3 rounded-md">
-              Cadastra-se
+              Cadastrar
             </button>
           </div>
         </div>
