@@ -149,23 +149,6 @@ VALUES (3, 2, 2, 'Açai com granola', 20.5, 5, CURRENT_DATE, 'perfeito!' )
 
 -- Criando view para facilitar a visualização das tabelas juntas
 		
--- Pratos com informações
-CREATE pratos_com_informacoes AS
-SELECT
-	prato.id_prato AS id_prato,
-    prato.nome AS nome_prato,
-    restaurante.nome AS nome_restaurante,
-    categoria.nome AS nome_categoria,
-    cliente.nome AS nome_cliente,
-    cliente.idade AS idade_cliente,
-    prato.avaliacao AS avaliacao_cliente
-FROM prato
-INNER JOIN restaurante ON prato.id_restaurante = restaurante.ID_restaurante
-INNER JOIN categoria ON prato.id_categoria = categoria.ID_categoria
-INNER JOIN cliente ON prato.id_cliente = cliente.ID_cliente;
-		
-SELECT * FROM pratos_com_informacoes ORDER BY id_prato ASC;
-
 -- Para ver a tabela geral do site
 CREATE OR REPLACE VIEW restaurantes_avaliacoes AS
 SELECT
@@ -186,6 +169,37 @@ LEFT JOIN cliente c ON p2.id_cliente = c.id_cliente
 GROUP BY r.ID_restaurante;;
 
 SELECT * FROM restaurantes_avaliacoes
+
+-- Para ver os pratos avaliados
+CREATE avaliacoes_pratos AS
+SELECT
+	prato.id_prato AS id_prato,
+    prato.nome AS nome_prato,
+    restaurante.nome AS nome_restaurante,
+    categoria.nome AS nome_categoria,
+    cliente.nome AS nome_cliente,
+    cliente.idade AS idade_cliente,
+    prato.avaliacao AS avaliacao_cliente
+FROM prato
+INNER JOIN restaurante ON prato.id_restaurante = restaurante.ID_restaurante
+INNER JOIN categoria ON prato.id_categoria = categoria.ID_categoria
+INNER JOIN cliente ON prato.id_cliente = cliente.ID_cliente;
+		
+SELECT * FROM avaliacoes_pratos ORDER BY id_prato ASC;
+
+-- Para ver os atendimentos avaliados
+CREATE OR REPLACE VIEW avaliacoes_atendimento AS
+SELECT
+    r.nome AS restaurante_nome,
+    a.id_atendimento AS atendimento_id,
+    a.avaliacao AS avaliacao_nota,
+    c.id_cliente AS cliente_id,
+    c.nome AS cliente_nome
+FROM atendimento a
+INNER JOIN restaurante r ON a.id_restaurante = r.id_restaurante
+INNER JOIN cliente c ON a.id_cliente = c.id_cliente;
+
+SELECT * FROM avaliacoes_atendimento;
 
 -- Alterando valores das tabelas
 	
