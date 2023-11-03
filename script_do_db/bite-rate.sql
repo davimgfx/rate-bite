@@ -171,9 +171,9 @@ GROUP BY r.ID_restaurante;;
 SELECT * FROM restaurantes_avaliacoes
 
 -- Para ver os pratos avaliados
-CREATE avaliacoes_pratos AS
+CREATE OR REPLACE VIEW avaliacoes_pratos  AS
 SELECT
-	prato.id_prato AS id_prato,
+    prato.id_prato AS id_prato,
     prato.nome AS nome_prato,
     restaurante.nome AS nome_restaurante,
     categoria.nome AS nome_categoria,
