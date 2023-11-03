@@ -12,13 +12,13 @@ export const Header = () => {
           <div className="relative">
             <div className="flex items-center">
               <input
-                className="border border-black w-[35rem] h-[3.5rem] p-1"
+                className="border border-black w-[45rem] h-[3.5rem] p-1"
                 type="text"
                 name=""
                 id=""
               />
               <input
-                className="border border-black w-[30rem] h-[3.5rem] p-1 -translate-x-1"
+                className="border border-black w-[31rem] h-[3.5rem] p-1 -translate-x-1"
                 type="text"
                 name=""
                 id=""
@@ -47,12 +47,15 @@ export const Header = () => {
           </div>
         </div>
       </nav>
-      <div className="ml-[29rem] mt-[10rem]">
+      <div className="ml-[20rem] mt-[10rem]">
         <h2 className="flex  text-[4.8rem]  font-[700]">
           Avalie seus restaurantes favoritos!
         </h2>
+
         <p className="font-bold mt-[13rem]">Restaurante Vegeno</p>
-        <p className="text-[1.2rem]">Foto tirada por <span className="bold">Davi</span> em 27/10/2023</p>
+        <p className="text-[1.2rem]">
+          Foto tirada por <span className="bold">Davi</span> em 27/10/2023
+        </p>
       </div>
     </header>
   );
