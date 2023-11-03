@@ -38,11 +38,11 @@ A RateBite é um site onde é possível cadastrar restaurantes, bem como avalia�
 
 ### Paleta de Cores:
 - #FFFFFF
-- #7F7F7F
-- #EEA243
-- #F3A738
-- #2B2D42
+- #16A34A
+- #DC2626
+- #EAB308
+- #343946
 <br />
 
-<div align='center'><img src="https://github.com/davimgfx/rate-bite/assets/118557337/a7ff9fa2-e378-41d7-ab4f-9b15af3f1093"/></div>
+<div align='center'><img src="https://github.com/davimgfx/rate-bite/assets/118557337/a17d97f3-3618-42bc-b8cb-597fafbe87e9"/></div>
 
