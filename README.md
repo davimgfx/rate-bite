@@ -1,4 +1,4 @@
-<div align='center'><img style="width:16%" src='https://github.com/davimgfx/rate-bite/assets/118557337/079fad60-51cc-4188-8352-192067729fd5'/></div>
+<div align='center'><img style="width:300px" src='https://github.com/davimgfx/rate-bite/assets/118557337/69e97cd1-9253-4d39-808a-6310a5b1b3e1'/></div>
 
 # RateBite 👩‍🍳⭐
 A RateBite é um site onde é possível cadastrar restaurantes, bem como avaliações de clientes e o preço médio dos estabelecimentos.
@@ -30,11 +30,9 @@ A RateBite é um site onde é possível cadastrar restaurantes, bem como avalia�
 
 ## Design do Site
 ### Logo:
-<div style="display: flex"/>
-<img style="width:300px" src='https://github.com/davimgfx/rate-bite/assets/118557337/079fad60-51cc-4188-8352-192067729fd5'/>
-<img src="https://github.com/davimgfx/rate-bite/assets/118557337/4b8a7f1f-527c-44c2-afbc-a25a7f0ba7e4"/>
-<img src="https://github.com/davimgfx/rate-bite/assets/118557337/ef3c2c23-76c0-4a6b-ad9f-c67e7d08fd2a"/>
-</div>
+<img style="width:300px" src='https://github.com/davimgfx/rate-bite/assets/118557337/69e97cd1-9253-4d39-808a-6310a5b1b3e1'/>
+
+![Screenshot_2](https://github.com/davimgfx/rate-bite/assets/118557337/69e97cd1-9253-4d39-808a-6310a5b1b3e1)
 
 ### Paleta de Cores:
 - #FFFFFF
