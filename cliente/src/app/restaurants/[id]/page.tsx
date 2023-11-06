@@ -27,7 +27,7 @@ const page = ({ params }) => {
     }
   }, []);
 
-  function formatDateAndTime(dataHoraString : string) : string {
+  function formatDateAndTime(dataHoraString: string): string {
     const dataHora = new Date(dataHoraString);
     const options = {
       year: "numeric",
@@ -61,7 +61,9 @@ const page = ({ params }) => {
                   className="w-[40rem] p-10 border border-[#343946] rounded-lg">
                   <h2 className="text-[1.6rem]">{review.cliente_nome}</h2>
                   <p className="text-[1.1rem]">{review.cliente_idade} anos</p>
-
+                  <p className="text-[1rem]">
+                    {formatDateAndTime(review?.avaliacao_dia)}
+                  </p>
                   <Stack spacing={1}>
                     <Rating
                       name="half-rating-read"
@@ -80,7 +82,7 @@ const page = ({ params }) => {
             {selectReviewFood &&
               selectReviewFood.map((review) => (
                 <div
-                  key={review?.atendimento_id}
+                  key={review?.comentario_prato}
                   className="w-[40rem] p-10 border border-[#343946] rounded-lg">
                   <div className="flex items-center justify-between">
                     <div>
@@ -93,7 +95,7 @@ const page = ({ params }) => {
                       <Stack spacing={1}>
                         <Rating
                           name="half-rating-read"
-                          defaultValue={review.avaliacao_prato}
+                          defaultValue={review.avaliacao_cliente}
                           readOnly
                           size="large"
                         />
@@ -104,8 +106,9 @@ const page = ({ params }) => {
                     </div>
                   </div>
                   <div className="flex gap-4 my-4">
-                    <p className="text-[1.4rem]">{review?.nome_prato} -</p>
-                    <p className="text-[1.4rem]">{review?.nome_categoria}</p>
+                    <p className="text-[1.4rem]">{review?.nome_prato} - </p>
+                    
+                    <p className="text-[1.4rem] -translate-x-2">{review?.nome_categoria}</p>
                   </div>
 
                   <p className="text-[1.4rem]">
