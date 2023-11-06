@@ -7,7 +7,7 @@ const morgan = require("morgan");
 const db = require("./db");
 
 app.use(morgan("dev"));
-app.use(cors())
+app.use(cors());
 app.use(express.json());
 
 // Get all restaurants
@@ -33,10 +33,20 @@ app.get("/api/v1/restaurantes/:id", async (req, res) => {
       "SELECT * FROM restaurante WHERE id_restaurante = $1",
       [req.params.id]
     );
+    const reviewFood = await db.query(
+      "SELECT * FROM avaliacoes_pratos WHERE restaurante_id = $1",
+      [req.params.id]
+    );
+    const reviewService = await db.query(
+      "SELECT * FROM avaliacoes_atendimento WHERE restaurante_id = $1",
+      [req.params.id]
+    );
     res.status(200).json({
       status: "success",
       data: {
         restaurante: result.rows[0],
+        reviewFood: reviewFood.rows,
+        reviewService: reviewService.rows,
       },
     });
   } catch (error) {

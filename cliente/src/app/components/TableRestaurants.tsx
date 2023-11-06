@@ -4,6 +4,8 @@ import { AddRestaurantModal } from ".";
 import RestaurantApi from "@/api/RestaurantApi";
 import Image from "next/image";
 import Link from "next/link";
+import Rating from "@mui/material/Rating";
+import Stack from "@mui/material/Stack";
 
 export const TableRestaurants = () => {
   const { restaurants, sedivestaurants } = useContext(RestaurantsContext);
@@ -40,14 +42,16 @@ export const TableRestaurants = () => {
 
       <div className="flex items-center flex-col">
         <div>
-          <div className="flex items-center gap-[12rem] border-b border-gray-500 text-[#343946] text-[1.6rem] text-center px-[3rem]">
+          <div className="flex items-center gap-[12rem] border-b border-gray-500 text-[#343946] text-[1.6rem] text-center px-[4rem]">
             <div className="">Restaurantes</div>
 
             <div className="flex items-center">
               <div className="p-3 flex-1">Pessoas que avaliaram</div>
               <div className="p-3 flex-1">Media dos Atendimento</div>
               <div className="p-3 flex-1">Pessoas que avaliaram</div>
-              <div className="p-3 flex-1">Media dos <br/> Pratos</div>
+              <div className="p-3 flex-1">
+                Media dos <br /> Pratos
+              </div>
               <div className="flex gap-[5rem] items-center px-3">
                 <div className="flex-1">Edite</div>
                 <div className="flex-1">Delete</div>
@@ -60,7 +64,7 @@ export const TableRestaurants = () => {
             restaurants.map((item) => (
               <div
                 key={item.id_restaurante}
-                className="flex items-center gap-[10rem] border-b border-gray-500 text-[#343946] text-[1.6rem] py-5">
+                className="flex items-center gap-[8rem] border-b border-gray-500 text-[#343946] text-[1.6rem] py-5">
                 <Link href={`restaurants/${item.id_restaurante}`}>
                   <div className="flex items-center gap-10 w-[22rem] cursor-pointer">
                     <Image
@@ -85,20 +89,40 @@ export const TableRestaurants = () => {
                 <div className="p-3 flex items-center translate-x-[0.5rem]">
                   {item.pessoas_avaliacao_atendimento}
                 </div>
-                <div className="p-3 flex items-center translate-x-[3rem]">
-                  {parseFloat(item.media_avaliacao_atendimento)
-                    .toFixed(2)
-                    .toString()}
+                <div className="p-3 flex items-center translate-x-[4rem]">
+                  <Stack spacing={1}>
+                    <Rating
+                      name="half-rating-read"
+                      defaultValue={Number(
+                        parseFloat(item.media_avaliacao_atendimento)
+                          .toFixed(2)
+                          .toString()
+                      )}
+                      precision={0.05}
+                      readOnly
+                      size="large"
+                    />
+                  </Stack>
                 </div>
-                <div className="p-3 flex items-center translate-x-[7rem]">
+                <div className="p-3 flex items-center translate-x-[6.9rem]">
                   {item.pessoas_avaliacao_prato_gerais}
                 </div>
-                <div className="p-3 flex items-center translate-x-[9.4rem]">
-                  {parseFloat(item.media_avaliacao_prato_gerais)
-                    .toFixed(2)
-                    .toString()}
+                <div className="p-3 flex items-center translate-x-[8.4rem]">
+                  <Stack spacing={1}>
+                    <Rating
+                      name="half-rating-read"
+                      defaultValue={Number(
+                        parseFloat(item.media_avaliacao_prato_gerais)
+                          .toFixed(2)
+                          .toString()
+                      )}
+                      precision={0.05}
+                      readOnly
+                      size="large"
+                    />
+                  </Stack>
                 </div>
-                <div className="p-3 flex items-center translate-x-[4.5rem]">
+                <div className="p-3 flex items-center translate-x-[3.2rem]">
                   <Link href={`/restaurants/${item.id_restaurante}/update`}>
                     <button className="bg-yellow-500 px-4 py-3 rounded-md text-white text-[1.4rem]">
                       Edite

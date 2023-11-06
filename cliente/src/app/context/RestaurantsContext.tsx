@@ -16,13 +16,14 @@ export const RestaurantsContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [restaurants, setRestaurants] = useState(undefined);
+  const [restaurants, setRestaurants] = useState([]);
+  const [selectedRestaurant, setSelectedRestaurant] = useState([]);
 
   const addRestaurants = (restaurant) => {
     setRestaurants([...restaurants, restaurant]);
   };
 
-  const contextValue = { restaurants, setRestaurants, addRestaurants };
+  const contextValue = { restaurants, setRestaurants, addRestaurants, selectedRestaurant, setSelectedRestaurant };
   return (
     <RestaurantsContext.Provider value={contextValue}>
       {children}

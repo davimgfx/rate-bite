@@ -45,7 +45,6 @@ const page = ({ params }) => {
     const fetchData = async () => {
       try {
         const response = await RestaurantApi.get(`/${id}`);
-        console.log(response.data.data.restaurante);
         setRestaurant(response.data.data.restaurante);
       } catch (error) {
         console.log(error);
