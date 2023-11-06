@@ -1,6 +1,6 @@
 <div align='center'><img style="width:300px" src='https://github.com/davimgfx/rate-bite/assets/118557337/69e97cd1-9253-4d39-808a-6310a5b1b3e1'/></div>
 
-# RateBite 👩‍🍳⭐
+# RateBite 👩‍🍳
 A RateBite é um site onde é possível cadastrar restaurantes, bem como avaliações de clientes e o preço médio dos estabelecimentos.
 
 ### Construído com:
