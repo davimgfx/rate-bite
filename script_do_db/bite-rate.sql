@@ -174,7 +174,7 @@ SELECT * FROM restaurantes_avaliacoes
 CREATE OR REPLACE VIEW avaliacoes_pratos  AS
 SELECT
     restaurante.id_restaurante AS restaurante_id,
-	restaurante.nome AS nome_restaurante,
+    restaurante.nome AS nome_restaurante,
     prato.nome AS nome_prato,
     categoria.nome AS nome_categoria,
     cliente.nome AS nome_cliente,
@@ -186,6 +186,7 @@ INNER JOIN restaurante ON prato.id_restaurante = restaurante.ID_restaurante
 INNER JOIN categoria ON prato.id_categoria = categoria.ID_categoria
 INNER JOIN cliente ON prato.id_cliente = cliente.ID_cliente;
 
+
 -- SELECT * FROM avaliacoes_pratos WHERE restaurante_id = 1;
 
 SELECT * FROM avaliacoes_pratos ORDER BY id_prato ASC;
@@ -194,15 +195,15 @@ SELECT * FROM avaliacoes_pratos ORDER BY id_prato ASC;
 CREATE OR REPLACE VIEW avaliacoes_atendimento AS
 SELECT
     r.id_restaurante AS restaurante_id,
-    r.nome AS restaurante_nome,
     a.id_atendimento AS atendimento_id,
     a.avaliacao AS avaliacao_nota,
-    c.id_cliente AS cliente_id, 
+    a.dia AS avaliacao_dia,
     c.nome AS cliente_nome,
     c.idade As cliente_idade
 FROM atendimento a
 INNER JOIN restaurante r ON a.id_restaurante = r.id_restaurante
 INNER JOIN cliente c ON a.id_cliente = c.id_cliente;
+
 
 SELECT * FROM avaliacoes_atendimento;
 
