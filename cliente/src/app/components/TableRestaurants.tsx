@@ -38,82 +38,84 @@ export const TableRestaurants = () => {
         <AddRestaurantModal setIsModal={setIsModal} isModal={isModal} />
       )}
 
-      <table className="flex items-center flex-col">
-        <thead>
-          <tr className="flex items-center gap-[12rem] border-b border-gray-500 text-[#343946] text-[1.6rem]">
-            <th className="">Restaurantes</th>
+      <div className="flex items-center flex-col">
+        <div>
+          <div className="flex items-center gap-[12rem] border-b border-gray-500 text-[#343946] text-[1.6rem] text-center px-[3rem]">
+            <div className="">Restaurantes</div>
 
             <div className="flex items-center">
-              <th className="p-3 flex-1">Pessoas que avaliaram</th>
-              <th className="p-3 flex-1">Media do Atendimento</th>
-              <th className="p-3 flex-1">Pessoas que avaliaram</th>
-              <th className="p-3 flex-1">Media dos pratos</th>
+              <div className="p-3 flex-1">Pessoas que avaliaram</div>
+              <div className="p-3 flex-1">Media dos Atendimento</div>
+              <div className="p-3 flex-1">Pessoas que avaliaram</div>
+              <div className="p-3 flex-1">Media dos <br/> Pratos</div>
               <div className="flex gap-[5rem] items-center px-3">
-                <th className="flex-1">Edite</th>
-                <th className="flex-1">Delete</th>
+                <div className="flex-1">Edite</div>
+                <div className="flex-1">Delete</div>
               </div>
             </div>
-          </tr>
-        </thead>
-        <tbody>
+          </div>
+        </div>
+        <div>
           {restaurants &&
             restaurants.map((item) => (
-              <tr
+              <div
                 key={item.id_restaurante}
                 className="flex items-center gap-[10rem] border-b border-gray-500 text-[#343946] text-[1.6rem] py-5">
-                <td className="flex items-center gap-10 w-[22rem]">
-                  <Image
-                    src={item.logo_restaurante}
-                    alt={item.nome_restaurante}
-                    width={64}
-                    height={64}
-                    className="rounded-lg"
-                  />
-                  <div>
-                    <p>{item.nome_restaurante}</p>
-                    <p className="text-[1.2rem]">
-                      {item.localizacao_restaurante}
-                    </p>
-                    <div className="flex gap-2 text-[1.2rem]">
-                      <p>{item.cidade_restaurante}</p>
-                      <p>{item.estado_restaurante}</p>
+                <Link href={`restaurants/${item.id_restaurante}`}>
+                  <div className="flex items-center gap-10 w-[22rem] cursor-pointer">
+                    <Image
+                      src={item.logo_restaurante}
+                      alt={item.nome_restaurante}
+                      width={64}
+                      height={64}
+                      className="rounded-lg"
+                    />
+                    <div>
+                      <p>{item.nome_restaurante}</p>
+                      <p className="text-[1.2rem]">
+                        {item.localizacao_restaurante}
+                      </p>
+                      <div className="flex gap-2 text-[1.2rem]">
+                        <p>{item.cidade_restaurante}</p>
+                        <p>{item.estado_restaurante}</p>
+                      </div>
                     </div>
                   </div>
-                </td>
-                <td className="p-3 flex items-center translate-x-[-2rem]">
+                </Link>
+                <div className="p-3 flex items-center translate-x-[0.5rem]">
                   {item.pessoas_avaliacao_atendimento}
-                </td>
-                <td className="p-3 flex items-center translate-x-[3rem]">
+                </div>
+                <div className="p-3 flex items-center translate-x-[3rem]">
                   {parseFloat(item.media_avaliacao_atendimento)
                     .toFixed(2)
                     .toString()}
-                </td>
-                <td className="p-3 flex items-center translate-x-[7rem]">
+                </div>
+                <div className="p-3 flex items-center translate-x-[7rem]">
                   {item.pessoas_avaliacao_prato_gerais}
-                </td>
-                <td className="p-3 flex items-center translate-x-[12rem]">
+                </div>
+                <div className="p-3 flex items-center translate-x-[9.4rem]">
                   {parseFloat(item.media_avaliacao_prato_gerais)
                     .toFixed(2)
                     .toString()}
-                </td>
-                <td className="p-3 flex items-center translate-x-[8rem]">
+                </div>
+                <div className="p-3 flex items-center translate-x-[4.5rem]">
                   <Link href={`/restaurants/${item.id_restaurante}/update`}>
                     <button className="bg-yellow-500 px-4 py-3 rounded-md text-white text-[1.4rem]">
                       Edite
                     </button>
                   </Link>
-                </td>
-                <td className="flex items-center translate-x-[1rem]">
+                </div>
+                <div className="flex items-center -translate-x-[2.2rem]">
                   <button
                     className="bg-red-600 px-4 py-3 rounded-md text-white text-[1.4rem]"
                     onClick={() => handleDelete(item.id_restaurante)}>
                     Delete
                   </button>
-                </td>
-              </tr>
+                </div>
+              </div>
             ))}
-        </tbody>
-      </table>
+        </div>
+      </div>
     </div>
   );
 };
