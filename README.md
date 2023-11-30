@@ -13,11 +13,18 @@ A RateBite é um site onde é possível cadastrar restaurantes, bem como avalia�
 - Node.js
 #### Banco de dados
 - PostgresSQL
+#### Bibliotecas usadas com o Node
+- Cors
+- Dotenv
+- Express
+- Morgan
+- Nodemon
+- Pg
 
 ## Diagrama do Site
 <div align='center'><img src="https://github.com/davimgfx/rate-bite/assets/118557337/2178fdc4-70be-4c94-ba49-9a2d0186bbb7"/></div>
 
-## Link do vídeo
+## Link do vídeo mostrando como funciona
 https://youtu.be/lIFd53FNYtQ?si=RolPLD29qTZO5ylc
 
 ## Tabela do Crud
